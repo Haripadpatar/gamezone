@@ -159,7 +159,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose, activeTab, se
 
         {/* Sidebar Footer */}
         <div className="p-4 border-t border-dark-700/60 bg-dark-900/10 text-center">
-          <div className="text-[9px] text-gray-500">Antigravity Gaming Tech</div>
+          <div className="text-[9px] text-gray-500">SpaceH Gaming Technologies</div>
           <div className="text-[8px] text-gray-650 mt-0.5">Secure RNG Certifications</div>
         </div>
       </aside>

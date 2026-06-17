@@ -323,7 +323,7 @@ export const GameProvider: React.FC<{ children: React.ReactNode }> = ({ children
       'Just hit 5x in Aviator! 🚀',
       'Plinko dropped on 8x bucket let\'s go',
       'Anyone got a good coupon code?',
-      'Try ANTIGRAVITY50 for a bonus check',
+      'Try SPACEH50 for a bonus check',
       'Admin, check ticket please',
       'Double check client seeds on Provably Fair page',
       'Nice blackjack split win!',
@@ -498,7 +498,7 @@ export const GameProvider: React.FC<{ children: React.ReactNode }> = ({ children
     if (!user) return { success: false, message: 'Please log in first' };
     const cleanedCode = code.trim().toUpperCase();
 
-    if (cleanedCode === 'ANTIGRAVITY50') {
+    if (cleanedCode === 'SPACEH50') {
       // Add bonus balance
       setBonusBalance(prev => prev + 50.00);
       const newTx: Transaction = {

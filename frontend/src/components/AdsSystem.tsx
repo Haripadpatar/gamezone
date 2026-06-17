@@ -16,11 +16,11 @@ export const AdsSystem: React.FC<AdProps> = ({ placement }) => {
   // Auto show popup on homepage load if enabled
   useEffect(() => {
     if (placement === 'popup' && activeAds.popup) {
-      const shown = sessionStorage.getItem('antigravity_popup_shown');
+      const shown = sessionStorage.getItem('spaceh_popup_shown');
       if (!shown) {
         const timer = setTimeout(() => {
           setShowPopup(true);
-          sessionStorage.setItem('antigravity_popup_shown', 'true');
+          sessionStorage.setItem('spaceh_popup_shown', 'true');
         }, 1500);
         return () => clearTimeout(timer);
       }
@@ -73,7 +73,7 @@ export const AdsSystem: React.FC<AdProps> = ({ placement }) => {
 
           <h3 className="text-xl font-black text-white text-glow-cyan mb-2">WELCOME OFFER</h3>
           <p className="text-xs text-gray-400 mb-6">
-            Enter promotional code <span className="text-neon-cyan font-bold bg-dark-900 px-2 py-1 rounded border border-dark-700 select-all">ANTIGRAVITY50</span> to claim $50 free credits!
+            Enter promotional code <span className="text-neon-cyan font-bold bg-dark-900 px-2 py-1 rounded border border-dark-700 select-all">SPACEH50</span> to claim $50 free credits!
           </p>
 
           <button
@@ -96,7 +96,7 @@ export const AdsSystem: React.FC<AdProps> = ({ placement }) => {
             <Gift size={20} className="animate-bounce" />
           </div>
           <div>
-            <h4 className="text-sm font-bold text-white">Antigravity Partner Program</h4>
+            <h4 className="text-sm font-bold text-white">SpaceH Partner Program</h4>
             <p className="text-xs text-gray-450">Invite friends and earn 1% commission cashbacks on all their bets</p>
           </div>
         </div>

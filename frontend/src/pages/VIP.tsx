@@ -304,7 +304,7 @@ export const VIP: React.FC = () => {
               <div className="flex gap-1.5 w-full sm:w-auto sm:ml-auto">
                 <input
                   type="text"
-                  placeholder="e.g. ANTIGRAVITY50"
+                  placeholder="e.g. SPACEH50"
                   value={promoCode}
                   onChange={(e) => setPromoCode(e.target.value)}
                   className="bg-dark-950 border border-dark-750 rounded-lg py-1 px-3 text-[10px] text-white focus:outline-none w-full sm:w-36"

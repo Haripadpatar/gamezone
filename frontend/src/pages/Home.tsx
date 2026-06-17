@@ -117,7 +117,7 @@ export const Home: React.FC<HomeProps> = ({ onSelectGame }) => {
               Next-Gen <span className="bg-clip-text text-transparent bg-cyber-gradient text-glow-purple">Gaming</span> Technology
             </h1>
             <p className="text-xs md:text-sm text-gray-405 leading-relaxed">
-              Welcome to Antigravity, the premium digital entertainment hub. Enjoy secure financial transaction gates, real-time analytics, and guaranteed provably fair game algorithms.
+              Welcome to SpaceH, the next-generation gaming technology platform. Enjoy secure financial transaction gates, real-time analytics, and guaranteed provably fair game algorithms.
             </p>
 
             {!user && (

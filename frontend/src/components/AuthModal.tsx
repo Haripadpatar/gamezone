@@ -38,7 +38,7 @@ export const AuthModal: React.FC = () => {
     }
 
     if (authTab === 'login') {
-      login(username, email || `${username}@antigravity.io`);
+      login(username, email || `${username}@spaceh.io`);
     } else {
       register(username, email, refBy);
     }
