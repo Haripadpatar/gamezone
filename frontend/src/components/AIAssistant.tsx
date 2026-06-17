@@ -185,8 +185,8 @@ export const AIAssistant: React.FC = () => {
                 </h4>
                 <span className="text-[8px] bg-neon-pink text-white font-black px-1.5 py-0.5 rounded">RTP 97.4%</span>
               </div>
-              <div className="font-extrabold text-white text-xs">Crash Rocket</div>
-              <p className="text-[9px] text-gray-400 leading-normal">Our algorithms note a high probability streak on rocket flight ranges today. Try placing a practice roll!</p>
+              <div className="font-extrabold text-white text-xs">Aviator</div>
+              <p className="text-[9px] text-gray-400 leading-normal">Our algorithms note a high probability streak on flight multiplier ranges today. Try placing a practice roll!</p>
             </div>
 
             <div className="p-3.5 bg-neon-purple/5 border border-neon-purple/20 rounded-xl space-y-1.5">

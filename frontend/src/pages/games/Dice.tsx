@@ -77,9 +77,9 @@ export const Dice: React.FC = () => {
       {/* Header */}
       <div>
         <h1 className="text-2xl font-black text-white flex items-center gap-2">
-          <Dice5 className="text-neon-emerald" size={24} /> Cyber Dice
+          <Dice5 className="text-neon-emerald" size={24} /> Lucky Dice
         </h1>
-        <p className="text-xs text-gray-400">Configure Roll targets, balance win chances with multiplier payloads, and roll the dice.</p>
+        <p className="text-xs text-gray-400">Configure roll targets, adjust win chances with multiplier payouts, and roll the dice.</p>
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">

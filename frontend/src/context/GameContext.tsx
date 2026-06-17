@@ -320,7 +320,7 @@ export const GameProvider: React.FC<{ children: React.ReactNode }> = ({ children
   useEffect(() => {
     const mockUsernames = ['MegaWinner', 'CryptoNinja', 'DiceKing', 'PlinkoPro', 'GamerX', 'LuckyStriker', 'ShadowBet', 'SpinQueen', 'ApexPredator', 'CasinoBoss'];
     const chatFeed = [
-      'Just hit 5x in Crash rocket! 🚀',
+      'Just hit 5x in Aviator! 🚀',
       'Plinko dropped on 8x bucket let\'s go',
       'Anyone got a good coupon code?',
       'Try ANTIGRAVITY50 for a bonus check',

@@ -18,6 +18,12 @@ import { WheelSpin } from './pages/games/WheelSpin';
 import { Dice } from './pages/games/Dice';
 import { CardGames } from './pages/games/CardGames';
 import { ColorPrediction } from './pages/games/ColorPrediction';
+import { DragonTiger } from './pages/games/DragonTiger';
+import { TeenPatti } from './pages/games/TeenPatti';
+import { Ludo } from './pages/games/Ludo';
+import { AndarBahar } from './pages/games/AndarBahar';
+import { Baccarat } from './pages/games/Baccarat';
+import { Poker } from './pages/games/Poker';
 import { AuthModal } from './components/AuthModal';
 import { WalletModal } from './components/WalletModal';
 import { UserProfileModal } from './components/UserProfileModal';
@@ -66,6 +72,18 @@ const MainLayout: React.FC = () => {
         return <CardGames />;
       case 'color':
         return <ColorPrediction />;
+      case 'dragon_tiger':
+        return <DragonTiger />;
+      case 'teen_patti':
+        return <TeenPatti />;
+      case 'ludo':
+        return <Ludo />;
+      case 'andar_bahar':
+        return <AndarBahar />;
+      case 'baccarat':
+        return <Baccarat />;
+      case 'poker':
+        return <Poker />;
       default:
         return <Home onSelectGame={(gameId) => setActiveTab(gameId)} />;
     }

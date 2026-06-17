@@ -18,7 +18,10 @@ import {
   ShieldCheck,
   Award,
   Download,
-  X
+  X,
+  Swords,
+  Spade,
+  Club
 } from 'lucide-react';
 
 interface SidebarProps {
@@ -42,14 +45,20 @@ export const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose, activeTab, se
 
   const gamesLinks = [
     { id: 'mines', label: 'Mines', icon: Bomb, color: 'text-orange-500' },
-    { id: 'crash', label: 'Crash Rocket', icon: Flame, color: 'text-neon-pink' },
+    { id: 'crash', label: 'Aviator', icon: Flame, color: 'text-neon-pink' },
     { id: 'slots', label: 'Golden Slots', icon: Coins, color: 'text-neon-gold' },
     { id: 'roulette', label: 'Roulette Royale', icon: CircleDot, color: 'text-red-500' },
     { id: 'plinko', label: 'Plinko Drop', icon: Gamepad2, color: 'text-neon-cyan' },
     { id: 'wheel', label: 'Wheel Spin', icon: RotateCcw, color: 'text-purple-400' },
-    { id: 'dice', label: 'Cyber Dice', icon: Dice5, color: 'text-emerald-450' },
+    { id: 'dice', label: 'Lucky Dice', icon: Dice5, color: 'text-emerald-450' },
     { id: 'blackjack', label: 'Blackjack', icon: Dices, color: 'text-blue-400' },
     { id: 'color', label: 'Color Match', icon: HelpCircle, color: 'text-pink-500' },
+    { id: 'dragon_tiger', label: 'Dragon vs Tiger', icon: Swords, color: 'text-red-500' },
+    { id: 'teen_patti', label: 'Teen Patti', icon: Spade, color: 'text-neon-gold' },
+    { id: 'ludo', label: 'Ludo', icon: Gamepad2, color: 'text-green-400' },
+    { id: 'andar_bahar', label: 'Andar Bahar', icon: Dices, color: 'text-neon-pink' },
+    { id: 'baccarat', label: 'Baccarat', icon: Club, color: 'text-neon-cyan' },
+    { id: 'poker', label: "Poker Texas Hold'em", icon: Club, color: 'text-purple-500' },
   ];
 
   const handleLinkClick = (tabId: string) => {

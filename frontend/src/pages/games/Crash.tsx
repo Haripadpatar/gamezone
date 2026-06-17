@@ -224,9 +224,9 @@ export const Crash: React.FC = () => {
       {/* Header */}
       <div>
         <h1 className="text-2xl font-black text-white flex items-center gap-2">
-          <Flame className="text-neon-pink" size={24} /> Crash Rocket
+          <Flame className="text-neon-pink" size={24} /> Aviator
         </h1>
-        <p className="text-xs text-gray-400">Place wagers, watch the rocket multiplier climb, and cash out before the explosion.</p>
+        <p className="text-xs text-gray-400">Place wagers, watch the flight multiplier climb, and cash out before the crash.</p>
       </div>
 
       {/* Grid structure */}

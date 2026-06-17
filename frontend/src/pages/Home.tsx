@@ -16,8 +16,27 @@ import {
   TrendingUp,
   Zap,
   ShieldCheck,
-  CheckCircle2
+  CheckCircle2,
+  Swords,
+  Spade,
+  Club
 } from 'lucide-react';
+
+import minesPoster from '../assets/mines.jpg';
+import aviatorPoster from '../assets/aviator.jpg';
+import goldenSlotsPoster from '../assets/golden_slots.png';
+import roulettePoster from '../assets/car_roulette.jpg';
+import plinkoPoster from '../assets/plinko.png';
+import wheelPoster from '../assets/wheel_spin.jpg';
+import luckyDicePoster from '../assets/lucky_dice.png';
+import blackjackPoster from '../assets/blackjack.png';
+import colorPoster from '../assets/color_prediction.png';
+import dragonTigerPoster from '../assets/dragon_tiger.jpg';
+import teenPattiPoster from '../assets/teen_patti.png';
+import ludoPoster from '../assets/ludo.png';
+import andarBaharPoster from '../assets/andar_bahar.png';
+import baccaratPoster from '../assets/baccarat.png';
+import pokerPoster from '../assets/poker.png';
 
 interface HomeProps {
   onSelectGame: (gameId: string) => void;
@@ -28,15 +47,21 @@ export const Home: React.FC<HomeProps> = ({ onSelectGame }) => {
   const [filter, setFilter] = useState<'all' | 'instant' | 'cards' | 'chance'>('all');
 
   const games = [
-    { id: 'mines', title: 'Mines', category: 'instant', icon: Bomb, color: 'from-orange-600 to-amber-500', desc: 'Reveal gems, avoid mines, multiplier increases.', hot: true },
-    { id: 'crash', title: 'Crash Rocket', category: 'instant', icon: Flame, color: 'from-neon-pink to-purple-600', desc: 'Predict the rocket crash trajectory.', hot: true },
-    { id: 'slots', title: 'Golden Slots', category: 'chance', icon: Coins, color: 'from-neon-gold to-yellow-600', desc: '3-reel fruit machine. Mega paylines.', hot: false },
-    { id: 'roulette', title: 'Roulette Royale', category: 'chance', icon: CircleDot, color: 'from-red-650 to-red-500', desc: 'Place bets on numbers, color, or odd/even.', hot: false },
-    { id: 'plinko', title: 'Plinko Drop', category: 'instant', icon: Gamepad2, color: 'from-neon-cyan to-blue-600', desc: 'Drop balls through pegs into multipliers.', hot: true },
-    { id: 'wheel', title: 'Wheel Spin', category: 'chance', icon: RotateCcw, color: 'from-purple-600 to-indigo-500', desc: 'Spin the wheel of fortune for prizes.', hot: false },
-    { id: 'dice', title: 'Cyber Dice', category: 'instant', icon: Dice5, color: 'from-emerald-500 to-teal-600', desc: 'Roll high or low to win. Adjust risk sliders.', hot: false },
-    { id: 'blackjack', title: 'Blackjack', category: 'cards', icon: Dices, color: 'from-blue-600 to-slate-550', desc: 'Beat the dealer score without crossing 21.', hot: true },
-    { id: 'color', title: 'Color Match', category: 'chance', icon: HelpCircle, color: 'from-pink-600 to-rose-500', desc: 'Predict color trends. 30-sec cycles.', hot: false }
+    { id: 'mines', title: 'Mines', category: 'instant', icon: Bomb, poster: minesPoster, desc: 'Reveal gems, avoid mines, multiplier increases.', hot: true },
+    { id: 'crash', title: 'Aviator', category: 'instant', icon: Flame, poster: aviatorPoster, desc: 'Predict the rocket crash trajectory.', hot: true },
+    { id: 'slots', title: 'Golden Slots', category: 'chance', icon: Coins, poster: goldenSlotsPoster, desc: '3-reel fruit machine. Mega paylines.', hot: false },
+    { id: 'roulette', title: 'Roulette Royale', category: 'chance', icon: CircleDot, poster: roulettePoster, desc: 'Place bets on numbers, color, or odd/even.', hot: false },
+    { id: 'plinko', title: 'Plinko Drop', category: 'instant', icon: Gamepad2, poster: plinkoPoster, desc: 'Drop balls through pegs into multipliers.', hot: true },
+    { id: 'wheel', title: 'Wheel Spin', category: 'chance', icon: RotateCcw, poster: wheelPoster, desc: 'Spin the wheel of fortune for prizes.', hot: false },
+    { id: 'dice', title: 'Lucky Dice', category: 'instant', icon: Dice5, poster: luckyDicePoster, desc: 'Roll high or low to win. Adjust risk sliders.', hot: false },
+    { id: 'blackjack', title: 'Blackjack', category: 'cards', icon: Dices, poster: blackjackPoster, desc: 'Beat the dealer score without crossing 21.', hot: true },
+    { id: 'color', title: 'Color Match', category: 'chance', icon: HelpCircle, poster: colorPoster, desc: 'Predict color trends. 30-sec cycles.', hot: false },
+    { id: 'dragon_tiger', title: 'Dragon vs Tiger', category: 'cards', icon: Swords, poster: dragonTigerPoster, desc: 'Predict high card between Dragon and Tiger.', hot: true },
+    { id: 'teen_patti', title: 'Teen Patti', category: 'cards', icon: Spade, poster: teenPattiPoster, desc: 'Indian 3-card poker game. Showdown of hands.', hot: true },
+    { id: 'ludo', title: 'Ludo', category: 'chance', icon: Gamepad2, poster: ludoPoster, desc: 'Race your tokens to the center in Ludo Arena.', hot: false },
+    { id: 'andar_bahar', title: 'Andar Bahar', category: 'cards', icon: Dices, poster: andarBaharPoster, desc: 'Predict if matching card rank lands inside or outside.', hot: false },
+    { id: 'baccarat', title: 'Baccarat', category: 'cards', icon: Club, poster: baccaratPoster, desc: 'Bet on Player, Banker or Tie in this luxury classic.', hot: false },
+    { id: 'poker', title: "Poker Texas Hold'em", category: 'cards', icon: Club, poster: pokerPoster, desc: 'Bluff and raise in the ultimate Texas Hold\'em cash tables.', hot: true }
   ];
 
   const filteredGames = filter === 'all' 
@@ -126,25 +151,30 @@ export const Home: React.FC<HomeProps> = ({ onSelectGame }) => {
           <div
             key={game.id}
             onClick={() => onSelectGame(game.id)}
-            className="group relative rounded-2xl border border-dark-700/50 bg-dark-900/40 p-4 cursor-pointer overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:border-neon-cyan/35 hover:bg-dark-900/80"
+            className="group relative rounded-2xl border border-dark-700/50 bg-dark-900/40 p-3.5 cursor-pointer overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:border-neon-cyan/45 hover:shadow-neon-cyan-glow hover:bg-dark-900/85"
           >
             {/* Glowing background on hover */}
-            <div className="absolute inset-0 bg-gradient-to-t from-dark-900 via-transparent to-transparent opacity-60 z-0" />
+            <div className="absolute inset-0 bg-gradient-to-t from-dark-900 via-transparent to-transparent opacity-65 z-0" />
             
             {/* Hot badge */}
             {game.hot && (
-              <span className="absolute top-3 right-3 z-10 inline-flex items-center px-2 py-0.5 rounded text-[8px] font-black bg-neon-pink text-white uppercase tracking-wide shadow-neon-pink">
+              <span className="absolute top-3.5 right-3.5 z-20 inline-flex items-center px-2 py-0.5 rounded text-[8px] font-black bg-neon-pink text-white uppercase tracking-wide shadow-neon-pink">
                 Hot
               </span>
             )}
 
-            {/* Icon visual container */}
-            <div className={`h-24 rounded-xl bg-gradient-to-br ${game.color} p-4 flex items-center justify-center relative mb-4 z-10 transition-transform duration-500 group-hover:scale-[1.03]`}>
-              <game.icon size={36} className="text-white drop-shadow-[0_4px_8px_rgba(0,0,0,0.4)]" />
+            {/* Poster image container */}
+            <div className="relative h-44 rounded-xl overflow-hidden mb-3.5 z-10 border border-dark-750 group-hover:border-neon-cyan/30 transition-all duration-300">
+              <img 
+                src={game.poster} 
+                alt={game.title} 
+                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" 
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-dark-900/90 via-transparent to-transparent opacity-90" />
             </div>
 
             {/* Game info */}
-            <div className="space-y-1 z-10 relative">
+            <div className="space-y-1 z-10 relative px-0.5">
               <h3 className="font-bold text-sm text-white group-hover:text-neon-cyan transition-colors">
                 {game.title}
               </h3>
