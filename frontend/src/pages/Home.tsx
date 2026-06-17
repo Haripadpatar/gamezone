@@ -309,11 +309,71 @@ export const Home: React.FC<HomeProps> = ({ onSelectGame }) => {
             <seal.icon className="shrink-0 text-neon-cyan" size={20} />
             <div className="space-y-1">
               <h4 className="text-xs font-bold text-white">{seal.title}</h4>
-              <p className="text-[10px] text-gray-500 leading-normal">{seal.desc}</p>
+              <p className="text-[10px] text-gray-550 leading-normal">{seal.desc}</p>
             </div>
           </div>
         ))}
       </div>
+
+      {/* 6. Portfolio Showcase Footer */}
+      <footer className="border-t border-dark-750/80 pt-8 mt-12 space-y-6">
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 pb-6 border-b border-dark-800">
+          <div className="space-y-1.5 text-left">
+            <h4 className="text-sm font-black text-white flex items-center gap-1.5">
+              <span className="h-2 w-2 rounded-full bg-neon-cyan animate-pulse" />
+              AGX by SpaceH
+            </h4>
+            <p className="text-[10px] text-gray-500 leading-normal max-w-sm">
+              SpaceH is an advanced digital gaming ecosystem built for high-performance and cryptographically secured provably fair RNG games.
+            </p>
+          </div>
+
+          <div className="flex flex-wrap gap-4 text-xs font-black">
+            <a 
+              href="https://github.com/haripadpatar/gamezone"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-gray-400 hover:text-neon-cyan transition-colors"
+            >
+              GitHub Repository
+            </a>
+            <span className="text-gray-700">|</span>
+            <a 
+              href="https://www.mediafire.com/file/6srew8w75x1sad5/app-debug.apk/file"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-gray-400 hover:text-neon-cyan transition-colors"
+            >
+              Download Android App
+            </a>
+          </div>
+        </div>
+
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+          <div className="flex flex-wrap items-center gap-2">
+            <span className="text-[9px] uppercase font-black text-gray-550 tracking-wider">Built With:</span>
+            {[
+              { name: 'React', color: 'bg-blue-950/45 text-blue-405 border-blue-800/20' },
+              { name: 'TypeScript', color: 'bg-indigo-950/45 text-indigo-405 border-indigo-800/20' },
+              { name: 'Spring Boot', color: 'bg-emerald-950/45 text-emerald-450 border-emerald-800/20' },
+              { name: 'PostgreSQL', color: 'bg-cyan-950/45 text-cyan-405 border-cyan-800/20' },
+              { name: 'Redis', color: 'bg-rose-950/45 text-rose-405 border-rose-800/20' },
+              { name: 'WebSocket', color: 'bg-amber-950/45 text-amber-405 border-amber-800/20' },
+              { name: 'Docker', color: 'bg-sky-950/45 text-sky-405 border-sky-800/20' }
+            ].map((tech, idx) => (
+              <span 
+                key={idx} 
+                className={`px-2 py-0.5 rounded text-[8.5px] font-black border uppercase tracking-wider ${tech.color}`}
+              >
+                {tech.name}
+              </span>
+            ))}
+          </div>
+          <div className="text-[9px] text-gray-550 font-bold uppercase tracking-widest">
+            © {new Date().getFullYear()} SpaceH Gaming. All rights reserved.
+          </div>
+        </div>
+      </footer>
 
     </div>
   );
