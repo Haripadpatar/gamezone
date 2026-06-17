@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { GameProvider, useGame } from './context/GameContext';
 import { Navbar } from './components/Navbar';
 import { Sidebar } from './components/Sidebar';
@@ -37,10 +37,81 @@ const MainLayout: React.FC = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [activeTab, setActiveTab] = useState('home');
 
+  const pathMap: Record<string, string> = {
+    '/': 'home',
+    '/leaderboard': 'leaderboard',
+    '/vip': 'vip',
+    '/referral': 'referral',
+    '/provably': 'provably',
+    '/tournaments': 'tournaments',
+    '/admin': 'admin',
+    '/mines': 'mines',
+    '/aviator': 'crash',
+    '/crash': 'crash',
+    '/slots': 'slots',
+    '/roulette': 'roulette',
+    '/plinko': 'plinko',
+    '/wheel': 'wheel',
+    '/dice': 'dice',
+    '/blackjack': 'blackjack',
+    '/color': 'color',
+    '/dragon-vs-tiger': 'dragon_tiger',
+    '/teen-patti': 'teen_patti',
+    '/ludo': 'ludo',
+    '/andar-bahar': 'andar_bahar',
+    '/baccarat': 'baccarat',
+    '/poker': 'poker'
+  };
+
+  const tabMap: Record<string, string> = {
+    'home': '/',
+    'leaderboard': '/leaderboard',
+    'vip': '/vip',
+    'referral': '/referral',
+    'provably': '/provably',
+    'tournaments': '/tournaments',
+    'admin': '/admin',
+    'mines': '/mines',
+    'crash': '/aviator',
+    'slots': '/slots',
+    'roulette': '/roulette',
+    'plinko': '/plinko',
+    'wheel': '/wheel',
+    'dice': '/dice',
+    'blackjack': '/blackjack',
+    'color': '/color',
+    'dragon_tiger': '/dragon-vs-tiger',
+    'teen_patti': '/teen-patti',
+    'ludo': '/ludo',
+    'andar_bahar': '/andar-bahar',
+    'baccarat': '/baccarat',
+    'poker': '/poker'
+  };
+
+  useEffect(() => {
+    const handleLocationChange = () => {
+      const path = window.location.pathname;
+      const tab = pathMap[path] || 'home';
+      setActiveTab(tab);
+    };
+
+    handleLocationChange();
+    window.addEventListener('popstate', handleLocationChange);
+    return () => window.removeEventListener('popstate', handleLocationChange);
+  }, []);
+
+  const handleSetActiveTab = (tab: string) => {
+    setActiveTab(tab);
+    const path = tabMap[tab] || '/';
+    if (window.location.pathname !== path) {
+      window.history.pushState({ tab }, '', path);
+    }
+  };
+
   const renderContent = () => {
     switch (activeTab) {
       case 'home':
-        return <Home onSelectGame={(gameId) => setActiveTab(gameId)} />;
+        return <Home onSelectGame={(gameId) => handleSetActiveTab(gameId)} />;
       case 'leaderboard':
         return <Leaderboard />;
       case 'vip':
@@ -52,7 +123,7 @@ const MainLayout: React.FC = () => {
       case 'tournaments':
         return <Tournaments />;
       case 'admin':
-        return user?.role === 'ADMIN' ? <AdminDashboard /> : <Home onSelectGame={(gameId) => setActiveTab(gameId)} />;
+        return user?.role === 'ADMIN' ? <AdminDashboard /> : <Home onSelectGame={(gameId) => handleSetActiveTab(gameId)} />;
       // Games
       case 'mines':
         return <Mines />;
@@ -85,7 +156,7 @@ const MainLayout: React.FC = () => {
       case 'poker':
         return <Poker />;
       default:
-        return <Home onSelectGame={(gameId) => setActiveTab(gameId)} />;
+        return <Home onSelectGame={(gameId) => handleSetActiveTab(gameId)} />;
     }
   };
 
@@ -97,7 +168,7 @@ const MainLayout: React.FC = () => {
           isOpen={sidebarOpen} 
           onClose={() => setSidebarOpen(false)} 
           activeTab={activeTab} 
-          setActiveTab={setActiveTab} 
+          setActiveTab={handleSetActiveTab} 
         />
         <main className="flex-1 overflow-y-auto px-4 py-6 md:px-8">
           {/* Load Pop-up Ads */}
