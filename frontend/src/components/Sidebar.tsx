@@ -20,7 +20,8 @@ import {
   X,
   Swords,
   Spade,
-  Club
+  Club,
+  BarChart3
 } from 'lucide-react';
 
 interface SidebarProps {
@@ -40,6 +41,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose, activeTab, se
     { id: 'referral', label: 'Referrals', icon: Users },
     { id: 'tournaments', label: 'Tournaments', icon: Award },
     { id: 'provably', label: 'Provably Fair', icon: ShieldCheck },
+    { id: 'analytics', label: 'Analytics', icon: BarChart3 },
   ];
 
   const gamesLinks = [

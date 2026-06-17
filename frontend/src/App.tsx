@@ -9,6 +9,7 @@ import { Referral } from './pages/Referral';
 import { AdminDashboard } from './pages/AdminDashboard';
 import { ProvablyFair } from './pages/ProvablyFair';
 import { Tournaments } from './pages/Tournaments';
+import { Analytics } from './pages/Analytics';
 import { Mines } from './pages/games/Mines';
 import { Crash } from './pages/games/Crash';
 import { Slots } from './pages/games/Slots';
@@ -60,7 +61,8 @@ const MainLayout: React.FC = () => {
     '/ludo': 'ludo',
     '/andar-bahar': 'andar_bahar',
     '/baccarat': 'baccarat',
-    '/poker': 'poker'
+    '/poker': 'poker',
+    '/analytics': 'analytics'
   };
 
   const tabMap: Record<string, string> = {
@@ -85,7 +87,8 @@ const MainLayout: React.FC = () => {
     'ludo': '/ludo',
     'andar_bahar': '/andar-bahar',
     'baccarat': '/baccarat',
-    'poker': '/poker'
+    'poker': '/poker',
+    'analytics': '/analytics'
   };
 
   useEffect(() => {
@@ -122,6 +125,8 @@ const MainLayout: React.FC = () => {
         return <ProvablyFair />;
       case 'tournaments':
         return <Tournaments />;
+      case 'analytics':
+        return <Analytics />;
       case 'admin':
         return user?.role === 'ADMIN' ? <AdminDashboard /> : <Home onSelectGame={(gameId) => handleSetActiveTab(gameId)} />;
       // Games
