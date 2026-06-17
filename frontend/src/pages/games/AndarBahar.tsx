@@ -45,6 +45,7 @@ export const AndarBahar: React.FC = () => {
   const [joker, setJoker] = useState<Card | null>(null);
   const [andarCards, setAndarCards] = useState<Card[]>([]);
   const [baharCards, setBaharCards] = useState<Card[]>([]);
+  const [history, setHistory] = useState<string[]>(['A', 'B', 'A', 'A', 'B', 'B', 'A', 'B']);
 
   const currentBalance = balanceMode === 'REAL' ? mainBalance : practiceBalance;
 
@@ -151,6 +152,9 @@ export const AndarBahar: React.FC = () => {
         } else {
           setMessage(`MATCH FOUND ON ${matchSide.toUpperCase()}! Settle wagers, dealer wins.`);
         }
+
+        const histSymbol = matchSide === 'andar' ? 'A' : 'B';
+        setHistory(prev => [...prev.slice(1), histSymbol]);
 
         setPlaying(false);
       }
@@ -268,7 +272,7 @@ export const AndarBahar: React.FC = () => {
         </div>
 
         {/* Live Simulation Arena */}
-        <div className="lg:col-span-8 glass-panel rounded-2xl border border-dark-700/60 overflow-hidden relative min-h-[350px] md:h-[450px] flex flex-col justify-between p-6">
+        <div className="lg:col-span-8 glass-panel rounded-2xl border border-dark-700/60 overflow-hidden relative min-h-[380px] md:h-[450px] flex flex-col justify-between p-6">
           <div className="absolute inset-0 z-0">
             <img
               src={andarBaharPoster}
@@ -276,6 +280,25 @@ export const AndarBahar: React.FC = () => {
               className="w-full h-full object-cover opacity-10"
             />
             <div className="absolute inset-0 bg-gradient-to-b from-dark-950/40 via-dark-950 to-dark-950" />
+          </div>
+
+          {/* Road Map (Bead Plate) */}
+          <div className="relative z-10 flex items-center justify-between bg-dark-900/60 border border-dark-800/80 p-2.5 rounded-xl">
+            <span className="text-[9px] font-black text-neon-gold tracking-widest uppercase">ROADMAP</span>
+            <div className="flex items-center gap-1.5">
+              {history.map((hist, idx) => (
+                <span
+                  key={idx}
+                  className={`w-6 h-6 rounded-full flex items-center justify-center text-[10px] font-black shadow-sm ${
+                    hist === 'A'
+                      ? 'bg-neon-pink/15 border border-neon-pink text-neon-pink shadow-neon-pink-glow'
+                      : 'bg-neon-cyan/15 border border-neon-cyan text-neon-cyan shadow-neon-cyan-glow'
+                  }`}
+                >
+                  {hist}
+                </span>
+              ))}
+            </div>
           </div>
 
           <div className="relative z-10 flex-1 flex flex-col items-center justify-center space-y-6">

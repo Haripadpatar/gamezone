@@ -44,6 +44,7 @@ export const DragonTiger: React.FC = () => {
   // Cards state
   const [dragonCard, setDragonCard] = useState<Card | null>(null);
   const [tigerCard, setTigerCard] = useState<Card | null>(null);
+  const [history, setHistory] = useState<string[]>(['D', 'T', 'D', 'D', 'Tie', 'T', 'D', 'T']);
 
   const currentBalance = balanceMode === 'REAL' ? mainBalance : practiceBalance;
 
@@ -120,6 +121,9 @@ export const DragonTiger: React.FC = () => {
         settleBet(amt, 0, 'Dragon vs Tiger', 0);
         setMessage(`WINNER: ${winner.toUpperCase()}! Better luck next time.`);
       }
+
+      const histSymbol = winner === 'dragon' ? 'D' : winner === 'tiger' ? 'T' : 'Tie';
+      setHistory(prev => [...prev.slice(1), histSymbol]);
 
       setPlaying(false);
     }, 1500);
@@ -237,7 +241,7 @@ export const DragonTiger: React.FC = () => {
         </div>
 
         {/* Live Simulation Arena */}
-        <div className="lg:col-span-8 glass-panel rounded-2xl border border-dark-700/60 overflow-hidden relative min-h-[350px] md:h-[450px] flex flex-col justify-between p-6">
+        <div className="lg:col-span-8 glass-panel rounded-2xl border border-dark-700/60 overflow-hidden relative min-h-[380px] md:h-[450px] flex flex-col justify-between p-6">
           {/* Background Poster Cover */}
           <div className="absolute inset-0 z-0">
             <img
@@ -246,6 +250,27 @@ export const DragonTiger: React.FC = () => {
               className="w-full h-full object-cover opacity-15"
             />
             <div className="absolute inset-0 bg-gradient-to-b from-dark-950/40 via-dark-950 to-dark-950" />
+          </div>
+
+          {/* Road Map (Bead Plate) */}
+          <div className="relative z-10 flex items-center justify-between bg-dark-900/60 border border-dark-800/80 p-2.5 rounded-xl">
+            <span className="text-[9px] font-black text-neon-gold tracking-widest uppercase">ROADMAP</span>
+            <div className="flex items-center gap-1.5">
+              {history.map((hist, idx) => (
+                <span
+                  key={idx}
+                  className={`w-6 h-6 rounded-full flex items-center justify-center text-[10px] font-black shadow-sm ${
+                    hist === 'D'
+                      ? 'bg-red-950/40 border border-red-500/35 text-red-400 shadow-neon-pink-glow'
+                      : hist === 'T'
+                      ? 'bg-blue-950/40 border border-blue-500/35 text-blue-400 shadow-neon-cyan-glow'
+                      : 'bg-neon-gold/15 border border-neon-gold text-neon-gold shadow-neon-gold-glow'
+                  }`}
+                >
+                  {hist}
+                </span>
+              ))}
+            </div>
           </div>
 
           {/* Table Area */}
