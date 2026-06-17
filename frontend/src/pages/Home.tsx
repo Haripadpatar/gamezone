@@ -12,7 +12,6 @@ import {
   Dices, 
   HelpCircle,
   ShieldAlert,
-  ArrowRight,
   TrendingUp,
   Zap,
   ShieldCheck,
@@ -44,7 +43,7 @@ interface HomeProps {
 }
 
 export const Home: React.FC<HomeProps> = ({ onSelectGame }) => {
-  const { recentBets, setShowAuthModal, user } = useGame();
+  const { recentBets } = useGame();
   const [filter, setFilter] = useState<'all' | 'instant' | 'cards' | 'chance'>('all');
 
   const games = [
@@ -78,60 +77,82 @@ export const Home: React.FC<HomeProps> = ({ onSelectGame }) => {
         {/* Glow backdrop */}
         <div className="absolute inset-0 bg-glass-glow bg-no-repeat bg-cover opacity-50 animate-pulse-slow" />
 
-        {/* APK Promo Widget Pill (Centered on desktop, above heading on mobile) */}
-        <div className="z-10 flex justify-center w-full">
+        {/* Compact Beta Information Card (Secondary Priority) */}
+        <div className="z-10 flex flex-col md:flex-row items-center justify-between gap-4 p-4 rounded-2xl bg-dark-900/60 border border-dark-750/80 w-full text-center md:text-left">
+          <div className="flex flex-col md:flex-row items-center gap-3 w-full md:w-auto">
+            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-neon-purple/15 border border-neon-purple/25 text-[9px] font-black text-neon-purple uppercase tracking-wider animate-pulse">
+              <Zap size={10} /> LAUNCHING BETA PROGRAM
+            </span>
+            <span className="text-xs font-black text-white tracking-wide">
+              AGX Gaming Technology
+            </span>
+          </div>
+          <div className="flex flex-wrap items-center justify-center gap-2.5 text-[10px] text-gray-400 font-semibold">
+            <span className="flex items-center gap-1">
+              <span className="h-1.5 w-1.5 rounded-full bg-neon-cyan" /> Secure transactions
+            </span>
+            <span className="hidden sm:inline text-gray-650">|</span>
+            <span className="flex items-center gap-1">
+              <span className="h-1.5 w-1.5 rounded-full bg-neon-purple" /> Provably Fair
+            </span>
+            <span className="hidden sm:inline text-gray-650">|</span>
+            <span className="flex items-center gap-1">
+              <span className="h-1.5 w-1.5 rounded-full bg-neon-pink" /> Real-time gaming
+            </span>
+          </div>
+        </div>
+
+        {/* Content rows: flex row on desktop, flex col on mobile */}
+        <div className="flex flex-col md:flex-row items-center justify-between gap-6 w-full z-10">
+          
+          {/* Left: Large APK download card (Primary Priority) */}
           <a 
             href="https://www.mediafire.com/file/6srew8w75x1sad5/app-debug.apk/file"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 md:gap-3 px-3.5 py-1.5 md:px-5 md:py-2.5 rounded-full bg-dark-950/85 border border-neon-cyan/20 hover:border-neon-cyan/50 hover:shadow-neon-cyan-glow hover:scale-[1.02] transition-all duration-300 group cursor-pointer select-none text-left"
+            className="block w-full max-w-lg bg-dark-950/80 border border-neon-cyan/20 hover:border-neon-cyan/50 hover:shadow-neon-cyan-glow hover:scale-[1.01] transition-all duration-300 rounded-3xl p-6 md:p-8 space-y-5 cursor-pointer text-left select-none relative overflow-hidden group"
           >
-            {/* Android Icon */}
-            <svg viewBox="0 0 24 24" fill="currentColor" className="w-3.5 h-3.5 md:w-4 md:h-4 text-emerald-500 animate-pulse shrink-0">
-              <path d="M17.523 15.3414C17.523 15.8617 17.1006 16.284 16.5804 16.284C16.0601 16.284 15.6377 15.8617 15.6377 15.3414C15.6377 14.8212 16.0601 14.3988 16.5804 14.3988C17.1006 14.3988 17.523 14.8212 17.523 15.3414ZM8.36185 15.3414C8.36185 15.8617 7.93952 16.284 7.41926 16.284C6.899 16.284 6.47667 15.8617 6.47667 15.3414C6.47667 14.8212 6.899 14.3988 7.41926 14.3988C7.93952 14.3988 8.36185 14.8212 8.36185 15.3414ZM17.6599 10.457L19.5222 7.23126C19.6548 7.0016 19.5762 6.7077 19.3465 6.57508C19.1168 6.44246 18.8229 6.52112 18.6903 6.75078L16.7961 10.0319C15.3477 9.3731 13.7317 9.00624 12 9.00624C10.2683 9.00624 8.65227 9.3731 7.20387 10.0319L5.30968 6.75078C5.17706 6.52112 4.88316 6.44246 4.6535 6.57508C4.42384 6.7077 4.34518 7.0016 4.4778 7.23126L6.34013 10.457C2.96918 12.3039 0.702759 15.7061 0.505737 19.6974H23.4943C23.2972 15.7061 21.0308 12.3039 17.6599 10.457Z" />
-            </svg>
-            <span className="text-[10px] md:text-xs font-black text-white group-hover:text-neon-cyan transition-colors tracking-wide shrink-0">
-              🎮 Play More Games
-            </span>
-            <span className="text-[9.5px] text-gray-400 font-semibold hidden md:inline shrink-0">
-              | Download our Android App and enjoy more exclusive games
-            </span>
-            <span className="text-[9px] text-gray-400 font-semibold md:hidden shrink-0">
-              | Download App
-            </span>
-            <span className="inline-flex items-center gap-1 px-2.5 py-1 bg-cyber-gradient text-[8px] md:text-[9.5px] font-black uppercase text-white rounded-full shadow-md group-hover:shadow-neon-cyan/25 transition-all shrink-0">
-              <Download size={10} />
+            {/* Subtle glow background */}
+            <div className="absolute -right-10 -top-10 h-32 w-32 bg-neon-cyan/10 blur-2xl rounded-full group-hover:bg-neon-cyan/20 transition-colors duration-300" />
+            
+            <div className="space-y-2">
+              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-neon-cyan/10 border border-neon-cyan/25 text-[10px] font-black text-neon-cyan uppercase tracking-wider animate-pulse">
+                <svg viewBox="0 0 24 24" fill="currentColor" className="w-3.5 h-3.5 text-emerald-500 mr-1">
+                  <path d="M17.523 15.3414C17.523 15.8617 17.1006 16.284 16.5804 16.284C16.0601 16.284 15.6377 15.8617 15.6377 15.3414C15.6377 14.8212 16.0601 14.3988 16.5804 14.3988C17.1006 14.3988 17.523 14.8212 17.523 15.3414ZM8.36185 15.3414C8.36185 15.8617 7.93952 16.284 7.41926 16.284C6.899 16.284 6.47667 15.8617 6.47667 15.3414C6.47667 14.8212 6.899 14.3988 7.41926 14.3988C7.93952 14.3988 8.36185 14.8212 8.36185 15.3414ZM17.6599 10.457L19.5222 7.23126C19.6548 7.0016 19.5762 6.7077 19.3465 6.57508C19.1168 6.44246 18.8229 6.52112 18.6903 6.75078L16.7961 10.0319C15.3477 9.3731 13.7317 9.00624 12 9.00624C10.2683 9.00624 8.65227 9.3731 7.20387 10.0319L5.30968 6.75078C5.17706 6.52112 4.88316 6.44246 4.6535 6.57508C4.42384 6.7077 4.34518 7.0016 4.4778 7.23126L6.34013 10.457C2.96918 12.3039 0.702759 15.7061 0.505737 19.6974H23.4943C23.2972 15.7061 21.0308 12.3039 17.6599 10.457Z" />
+                </svg>
+                RECOMMENDED INSTALL
+              </span>
+              <h2 className="text-2xl md:text-3xl font-black text-white leading-tight">
+                🎮 Play More Games
+              </h2>
+              <p className="text-xs text-gray-400 leading-relaxed">
+                Download the AGX Android App and unlock exclusive games, rewards, tournaments, and premium features.
+              </p>
+            </div>
+
+            {/* Features list */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-left">
+              {[
+                'Exclusive Android Games',
+                'Faster Access',
+                'Daily Rewards',
+                'VIP Benefits'
+              ].map((feature, idx) => (
+                <div key={idx} className="flex items-center gap-1.5 text-[11px] md:text-xs font-bold text-gray-300">
+                  <span className="text-emerald-500 font-extrabold">✓</span>
+                  <span>{feature}</span>
+                </div>
+              ))}
+            </div>
+
+            {/* CTA Button */}
+            <div className="inline-flex items-center justify-center gap-2 px-5 py-2.5 bg-cyber-gradient text-white font-black text-xs md:text-sm rounded-xl shadow-lg shadow-neon-cyan/20 transition-all uppercase tracking-wider w-full sm:w-auto">
+              <Download size={14} />
               <span>Download APK</span>
-            </span>
+            </div>
           </a>
-        </div>
 
-        {/* Content rows: flex row on desktop, flex col on mobile */}
-        <div className="flex flex-col md:flex-row items-center justify-between gap-6 w-full">
-          
-          <div className="space-y-4 max-w-lg z-10 text-left w-full">
-            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-neon-cyan/10 border border-neon-cyan/20 text-xs font-black text-neon-cyan uppercase tracking-wider animate-pulse">
-              <Zap size={12} /> Launching Beta Program
-            </span>
-            <h1 className="text-3xl md:text-5xl font-black text-white leading-tight">
-              Next-Gen <span className="bg-clip-text text-transparent bg-cyber-gradient text-glow-purple">Gaming</span> Technology
-            </h1>
-            <p className="text-xs md:text-sm text-gray-405 leading-relaxed">
-              Welcome to SpaceH, the next-generation gaming technology platform. Enjoy secure financial transaction gates, real-time analytics, and guaranteed provably fair game algorithms.
-            </p>
-
-            {!user && (
-              <button
-                onClick={() => setShowAuthModal(true)}
-                className="px-6 py-2.5 bg-neon-cyan hover:bg-neon-cyan/85 text-black font-black text-xs rounded-xl shadow-lg shadow-neon-cyan/20 transition-all flex items-center gap-2 group uppercase tracking-wider"
-              >
-                Start Playing Now 
-                <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
-              </button>
-            )}
-          </div>
-
-          {/* Banner graphics mockup */}
+          {/* Right: Banner graphics mockup */}
           <div className="relative w-48 h-48 md:w-56 md:h-56 z-10 flex items-center justify-center">
             <div className="absolute inset-0 rounded-full bg-cyber-gradient blur-2xl opacity-20 animate-spin-slow" />
             <div className="h-40 w-40 rounded-3xl bg-dark-900 border border-dark-750 flex flex-col items-center justify-center p-4 shadow-2xl relative rotate-6 hover:rotate-0 transition-transform">
