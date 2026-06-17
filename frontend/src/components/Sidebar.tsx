@@ -79,7 +79,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose, activeTab, se
       <aside className={`
         fixed top-0 bottom-0 left-0 z-40 w-64 bg-dark-950 border-r border-dark-700/60 flex flex-col pt-16
         transform lg:transform-none lg:static lg:z-0 transition-transform duration-300 ease-in-out
-        ${isOpen ? 'translate-x-0' : '-translate-x-0 lg:translate-x-0'}
+        ${isOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'}
       `}>
         {/* Mobile close button */}
         <button 
