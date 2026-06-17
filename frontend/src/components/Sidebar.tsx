@@ -17,7 +17,6 @@ import {
   HelpCircle,
   ShieldCheck,
   Award,
-  Download,
   X,
   Swords,
   Spade,
@@ -102,44 +101,6 @@ export const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose, activeTab, se
         {/* Scrollable Nav Area */}
         <div className="flex-1 overflow-y-auto px-4 py-4 space-y-6">
           
-          {/* Play More Games APK Download Banner */}
-          <a 
-            href="https://www.mediafire.com/file/6srew8w75x1sad5/app-debug.apk/file"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="block p-4 rounded-2xl bg-dark-900/60 border border-neon-cyan/20 hover:border-neon-cyan/40 hover:shadow-neon-cyan-glow hover:scale-[1.02] transition-all duration-300 cursor-pointer group text-left select-none relative overflow-hidden"
-          >
-            {/* Subtle glow background */}
-            <div className="absolute -right-8 -top-8 h-20 w-20 bg-neon-cyan/10 blur-xl rounded-full group-hover:bg-neon-cyan/20 transition-colors duration-300" />
-            
-            <div className="flex items-center gap-2 mb-1.5">
-              <span className="text-base">🎮</span>
-              <h4 className="text-xs font-black text-white group-hover:text-neon-cyan transition-colors">
-                Play More Games
-              </h4>
-            </div>
-            
-            <p className="text-[9px] text-gray-400 leading-normal mb-3">
-              Download our Android App and enjoy more exclusive games.
-            </p>
-            
-            <div className="flex flex-col gap-2.5">
-              {/* Android Indicator */}
-              <div className="flex items-center gap-1.5 self-start px-2 py-1 bg-dark-950/80 border border-dark-750 rounded-lg">
-                <svg viewBox="0 0 24 24" fill="currentColor" className="w-3 h-3 text-emerald-500">
-                  <path d="M17.523 15.3414C17.523 15.8617 17.1006 16.284 16.5804 16.284C16.0601 16.284 15.6377 15.8617 15.6377 15.3414C15.6377 14.8212 16.0601 14.3988 16.5804 14.3988C17.1006 14.3988 17.523 14.8212 17.523 15.3414ZM8.36185 15.3414C8.36185 15.8617 7.93952 16.284 7.41926 16.284C6.899 16.284 6.47667 15.8617 6.47667 15.3414C6.47667 14.8212 6.899 14.3988 7.41926 14.3988C7.93952 14.3988 8.36185 14.8212 8.36185 15.3414ZM17.6599 10.457L19.5222 7.23126C19.6548 7.0016 19.5762 6.7077 19.3465 6.57508C19.1168 6.44246 18.8229 6.52112 18.6903 6.75078L16.7961 10.0319C15.3477 9.3731 13.7317 9.00624 12 9.00624C10.2683 9.00624 8.65227 9.3731 7.20387 10.0319L5.30968 6.75078C5.17706 6.52112 4.88316 6.44246 4.6535 6.57508C4.42384 6.7077 4.34518 7.0016 4.4778 7.23126L6.34013 10.457C2.96918 12.3039 0.702759 15.7061 0.505737 19.6974H23.4943C23.2972 15.7061 21.0308 12.3039 17.6599 10.457Z" />
-                </svg>
-                <span className="text-[7.5px] text-gray-450 uppercase font-black tracking-wider">Android App</span>
-              </div>
-              
-              {/* CTA Button */}
-              <div className="flex items-center justify-center gap-1.5 w-full py-2 bg-cyber-gradient text-white text-[9px] font-black rounded-xl shadow-md group-hover:shadow-neon-cyan/25 transition-all">
-                <Download size={11} />
-                <span>Download APK</span>
-              </div>
-            </div>
-          </a>
-
           {/* Main Links */}
           <div className="space-y-1">
             {primaryLinks.map(link => (
