@@ -1,98 +1,205 @@
 # AGX — Premium Online Gaming Technology Platform
 
-AGX is a next-generation, high-performance online gaming and digital entertainment platform designed with a dark luxury user experience, secure transactional database wallets, cryptographic provably fair engines, real-time STOMP WebSocket communications, and Dockerized deployment.
+AGX is a modern full-stack gaming platform designed to demonstrate scalable software architecture, secure wallet management, real-time communication systems, and enterprise-grade backend development.
 
----
+The platform combines a React + TypeScript frontend with a Spring Boot backend, PostgreSQL persistence, Redis caching, JWT authentication, WebSocket communication, and Dockerized deployment.
 
-## 📁 Repository Structure
+## Tech Stack
 
-The project is organized as a monorepo containing:
-*   **`/frontend`**: React + TypeScript client powered by Vite, Tailwind CSS, and Framer Motion. Contains 9 fully interactive games, a VIP progress lounge, affiliate referral tree charts, secure wallet forms, and ad placements.
-*   **`/backend`**: Production-ready Spring Boot (Java 17) backend API service. Implements JPA repository database persistence, JWT filter authorization, Redis-backed OTP services, transactional double-spend protections, and WebSocket message brokers.
+### Frontend
 
----
+* React
+* TypeScript
+* Vite
+* Tailwind CSS
+* Framer Motion
 
-## ⚡ Deployment & Running Locally (Recommended)
+### Backend
 
-The easiest way to run the entire AGX backend service stack is using Docker Compose. This automatically spins up, configures, and links PostgreSQL, Redis, and the Spring Boot application.
+* Spring Boot
+* Spring Security
+* JWT Authentication
+* Spring Data JPA
+* WebSocket (STOMP + SockJS)
 
-### 1. Unified Launch with Docker Compose
-From the root directory of the repository, execute:
+### Database & Infrastructure
+
+* PostgreSQL
+* Redis
+* Docker
+* Docker Compose
+
+## Key Features
+
+### User Platform
+
+* User Registration & Login
+* JWT Authentication
+* OTP Verification Architecture
+* Wallet Management
+* Transaction History
+* Referral System
+* VIP Progress System
+* Notifications Center
+
+### Gaming Modules
+
+* Mines
+* Crash
+* Slots
+* Roulette
+* Plinko
+* Wheel Spin
+* Dice
+* Blackjack
+* Color Prediction
+
+### Real-Time Systems
+
+* Global Lobby Chat
+* Live Notifications
+* WebSocket Event Broadcasting
+* Tournament Updates
+
+### Wallet & Security
+
+* Main Balance
+* Bonus Balance
+* Locked Balance
+* Transaction Tracking
+* Pessimistic Database Locking
+* Double-Spend Protection
+* Role-Based Access Control
+
+### Administration
+
+* Admin Dashboard
+* User Management
+* Wallet Monitoring
+* Transaction Management
+* Notification Management
+
+## Project Structure
+
+```text
+gamezone/
+├── frontend/
+│   ├── src/
+│   ├── public/
+│   └── package.json
+│
+├── backend/
+│   ├── src/
+│   ├── pom.xml
+│   └── Dockerfile
+│
+├── docker-compose.yml
+└── README.md
+```
+
+## Running the Frontend
+
+```bash
+cd frontend
+npm install
+npm run dev
+```
+
+Frontend URL:
+
+```text
+http://localhost:5173
+```
+
+## Building the Frontend
+
+```bash
+npm run build
+```
+
+The production build is generated in:
+
+```text
+frontend/dist
+```
+
+## Running the Backend
+
+Prerequisites:
+
+* Java 17+
+* PostgreSQL
+* Redis
+
+```bash
+cd backend
+mvn clean test
+mvn spring-boot:run
+```
+
+Backend URL:
+
+```text
+http://localhost:8080
+```
+
+## Docker Deployment
+
 ```bash
 docker-compose up --build -d
 ```
 
-This starts three services:
-1.  **`agx-postgres`**: PostgreSQL database running on port `5432`, initialized automatically with the schema definitions.
-2.  **`agx-redis`**: Redis server running on port `6379` handling temporary OTP storage.
-3.  **`agx-backend`**: Spring Boot application running on port `8080`, configured to connect to the postgres and redis containers.
+Services:
 
-To monitor logs:
-```bash
-docker-compose logs -f backend
-```
+* PostgreSQL
+* Redis
+* Spring Boot Backend
 
-To tear down:
+Stop services:
+
 ```bash
 docker-compose down -v
 ```
 
----
+## Security Features
 
-## ☕ Manual Backend Execution (Development Mode)
+* JWT Authentication
+* Role-Based Access Control
+* OTP Service Architecture
+* Secure Password Storage
+* WebSocket Security
+* Transaction Validation
+* Double-Spend Protection
 
-If you prefer to run the Spring Boot application locally outside of Docker:
+## Learning Outcomes
 
-### Prerequisites
-*   **JDK 17 or 21+** (Project Lombok version is upgraded to `1.18.46` to support compiler environments up to JDK 23/24).
-*   **PostgreSQL** database active on port `5432` with a database named `antigravity`.
-*   **Redis** active on port `6379`.
+This project demonstrates:
 
-### Steps
-1.  **Navigate to the backend folder**:
-    ```bash
-    cd backend
-    ```
-2.  **Compile & Test**:
-    ```bash
-    mvn clean test
-    ```
-3.  **Run the Spring Boot application**:
-    ```bash
-    mvn spring-boot:run
-    ```
-    The application will run on [http://localhost:8080](http://localhost:8080).
+* Full Stack Development
+* REST API Design
+* Authentication & Authorization
+* Database Design
+* Real-Time Communication
+* Containerization with Docker
+* State Management
+* Secure Transaction Processing
+* Scalable System Architecture
 
----
+## Future Enhancements
 
-## 💻 Running the Frontend Client
+* Payment Gateway Integration
+* Email Provider Integration
+* SMS Provider Integration
+* CI/CD Pipeline
+* Cloud Deployment
+* Monitoring & Observability
+* Automated Testing Coverage
 
-To run the interactive UI client:
-1.  **Navigate to the frontend folder**:
-    ```bash
-    cd frontend
-    ```
-2.  **Install dependencies**:
-    ```bash
-    npm install
-    ```
-3.  **Launch the development server**:
-    ```bash
-    npm run dev
-    ```
-    The client will open on [http://localhost:5173](http://localhost:5173).
+## Author
 
----
+Haripad Patar
 
-## 🔐 Authentication, Security & OTP Flow
-
-*   **JWT Security Filters**: The Spring Boot backend intercepts HTTP requests using `JwtAuthenticationFilter`. Requests must carry a `Bearer <token>` payload in the `Authorization` header to access protected routes.
-*   **Email & SMS OTP**: 
-    *   Initiate verifications via `/api/auth/otp/send-email` or `/api/auth/otp/send-phone`.
-    *   OTPs are temporarily cached in Redis (5-minute TTL).
-    *   During development, the active OTP code is logged directly to the console output for easy sandboxing and testing.
-
----
+B.Tech CSE | Java Full Stack Developer | 2027 Graduate
 
 ## 💳 Concurrency & Transactional Wallets
 
