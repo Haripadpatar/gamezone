@@ -96,6 +96,9 @@ gamezone/
 ├── docker-compose.yml
 └── README.md
 ```
+LIVE URL 
+https://agx-platform-haripad.netlify.app
+
 
 ## Running the Frontend
 
