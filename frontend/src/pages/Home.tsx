@@ -107,7 +107,7 @@ export const Home: React.FC<HomeProps> = ({ onSelectGame }) => {
           
           {/* Left: Large APK download card (Primary Priority) */}
           <a 
-            href="https://www.mediafire.com/file/6srew8w75x1sad5/app-debug.apk/file"
+            href="https://www.mediafire.com/file/0y9mj92k1cuy18t/app-release.apk/file"
             target="_blank"
             rel="noopener noreferrer"
             className="block w-full max-w-lg bg-dark-950/80 border border-neon-cyan/20 hover:border-neon-cyan/50 hover:shadow-neon-cyan-glow hover:scale-[1.01] transition-all duration-300 rounded-3xl p-6 md:p-8 space-y-5 cursor-pointer text-left select-none relative overflow-hidden group"
@@ -126,17 +126,19 @@ export const Home: React.FC<HomeProps> = ({ onSelectGame }) => {
                 🎮 Play More Games
               </h2>
               <p className="text-xs text-gray-400 leading-relaxed">
-                Download the AGX Android App and unlock exclusive games, rewards, tournaments, and premium features.
+                Download the latest Android App and enjoy premium casino games, faster performance, new game modes, and regular updates.
               </p>
             </div>
 
             {/* Features list */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-left">
               {[
-                'Exclusive Android Games',
-                'Faster Access',
+                'Latest App Release',
+                '14+ Premium Games',
+                'Faster Performance',
                 'Daily Rewards',
-                'VIP Benefits'
+                'VIP Features',
+                'Secure Download'
               ].map((feature, idx) => (
                 <div key={idx} className="flex items-center gap-1.5 text-[11px] md:text-xs font-bold text-gray-300">
                   <span className="text-emerald-500 font-extrabold">✓</span>
@@ -148,7 +150,7 @@ export const Home: React.FC<HomeProps> = ({ onSelectGame }) => {
             {/* CTA Button */}
             <div className="inline-flex items-center justify-center gap-2 px-5 py-2.5 bg-cyber-gradient text-white font-black text-xs md:text-sm rounded-xl shadow-lg shadow-neon-cyan/20 transition-all uppercase tracking-wider w-full sm:w-auto">
               <Download size={14} />
-              <span>Download APK</span>
+              <span>Download Latest APK</span>
             </div>
           </a>
 
@@ -339,7 +341,7 @@ export const Home: React.FC<HomeProps> = ({ onSelectGame }) => {
             </a>
             <span className="text-gray-700">|</span>
             <a 
-              href="https://www.mediafire.com/file/6srew8w75x1sad5/app-debug.apk/file"
+              href="https://www.mediafire.com/file/0y9mj92k1cuy18t/app-release.apk/file"
               target="_blank"
               rel="noopener noreferrer"
               className="text-gray-400 hover:text-neon-cyan transition-colors"
