@@ -1,0 +1,6 @@
+com/nexacart/backend/modules/vendor/controller/VendorControllerTest.class
+com/nexacart/backend/modules/cart/controller/CartControllerTest.class
+com/nexacart/backend/modules/product/controller/ProductControllerTest.class
+com/nexacart/backend/modules/analytics/controller/AnalyticsControllerTest.class
+com/nexacart/backend/modules/order/controller/OrderControllerTest.class
+com/nexacart/backend/modules/auth/controller/AuthControllerTest.class

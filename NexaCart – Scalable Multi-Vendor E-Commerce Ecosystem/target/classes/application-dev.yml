@@ -1,0 +1,30 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/nexacart
+    username: postgres
+    password: password
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+  cache:
+    type: redis
+  data:
+    redis:
+      host: localhost
+      port: 6379
+
+app:
+  jwt:
+    # 256-bit secret key in base64/hex for HMAC-SHA256 signing
+    secret: dGhpcy1pcy1hLXZlcnktc2VjdXJlLWFuZC1sb25nLWVub3VnaC1zZWNyZXQta2V5LWZvci1uZXhhY2FydC1qd3Qtc2lnbmluZw==
+    # 15 minutes (900,000 ms)
+    expiration-ms: 900000
+    # 7 days (604,800,000 ms)
+    refresh-expiration-ms: 604800000
+    refresh-cookie-name: nexacart-refresh

@@ -13,13 +13,15 @@ import {
   HelpCircle,
   ShieldAlert,
   TrendingUp,
-  Zap,
   ShieldCheck,
   CheckCircle2,
   Swords,
   Spade,
   Club,
-  Download
+  Download,
+  Lock,
+  Users,
+  MessageSquare
 } from 'lucide-react';
 
 import minesPoster from '../assets/mines.jpg';
@@ -71,100 +73,220 @@ export const Home: React.FC<HomeProps> = ({ onSelectGame }) => {
   return (
     <div className="space-y-8 pb-10">
       
-      {/* 1. Hero Promo Banner Slider */}
-      <div className="relative overflow-hidden rounded-3xl bg-gradient-to-r from-dark-900 via-dark-800 to-dark-950 border border-dark-700/80 p-6 md:p-10 flex flex-col gap-6 md:gap-8 justify-between">
+      {/* 1. Redesigned Premium Hero Promo Banner */}
+      <div className="relative overflow-hidden rounded-3xl bg-gradient-to-r from-dark-900 via-dark-800 to-dark-950 border border-dark-700/80 p-6 md:p-10 flex flex-col gap-6 justify-between">
         
         {/* Glow backdrop */}
-        <div className="absolute inset-0 bg-glass-glow bg-no-repeat bg-cover opacity-50 animate-pulse-slow" />
+        <div className="absolute inset-0 bg-glass-glow bg-no-repeat bg-cover opacity-50 animate-pulse-slow pointer-events-none" />
 
-        {/* Compact Beta Information Card (Secondary Priority) */}
-        <div className="z-10 flex flex-col md:flex-row items-center justify-between gap-4 p-4 rounded-2xl bg-dark-900/60 border border-dark-750/80 w-full text-center md:text-left">
-          <div className="flex flex-col md:flex-row items-center gap-3 w-full md:w-auto">
-            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-neon-purple/15 border border-neon-purple/25 text-[9px] font-black text-neon-purple uppercase tracking-wider animate-pulse">
-              <Zap size={10} /> LAUNCHING BETA PROGRAM
-            </span>
-            <span className="text-xs font-black text-white tracking-wide">
-              AGX Gaming Technology
-            </span>
-          </div>
-          <div className="flex flex-wrap items-center justify-center gap-2.5 text-[10px] text-gray-400 font-semibold">
-            <span className="flex items-center gap-1">
-              <span className="h-1.5 w-1.5 rounded-full bg-neon-cyan" /> Secure transactions
-            </span>
-            <span className="hidden sm:inline text-gray-650">|</span>
-            <span className="flex items-center gap-1">
-              <span className="h-1.5 w-1.5 rounded-full bg-neon-purple" /> Provably Fair
-            </span>
-            <span className="hidden sm:inline text-gray-650">|</span>
-            <span className="flex items-center gap-1">
-              <span className="h-1.5 w-1.5 rounded-full bg-neon-pink" /> Real-time gaming
-            </span>
-          </div>
-        </div>
-
-        {/* Content rows: flex row on desktop, flex col on mobile */}
-        <div className="flex flex-col md:flex-row items-center justify-between gap-6 w-full z-10">
+        {/* Content rows: split layout */}
+        <div className="flex flex-col lg:flex-row items-center justify-between gap-8 md:gap-12 w-full z-10">
           
-          {/* Left: Large APK download card (Primary Priority) */}
-          <a 
-            href="https://www.mediafire.com/file/0y9mj92k1cuy18t/app-release.apk/file"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="block w-full max-w-lg bg-dark-950/80 border border-neon-cyan/20 hover:border-neon-cyan/50 hover:shadow-neon-cyan-glow hover:scale-[1.01] transition-all duration-300 rounded-3xl p-6 md:p-8 space-y-5 cursor-pointer text-left select-none relative overflow-hidden group"
-          >
-            {/* Subtle glow background */}
-            <div className="absolute -right-10 -top-10 h-32 w-32 bg-neon-cyan/10 blur-2xl rounded-full group-hover:bg-neon-cyan/20 transition-colors duration-300" />
-            
-            <div className="space-y-2">
-              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-neon-cyan/10 border border-neon-cyan/25 text-[10px] font-black text-neon-cyan uppercase tracking-wider animate-pulse">
-                <svg viewBox="0 0 24 24" fill="currentColor" className="w-3.5 h-3.5 text-emerald-500 mr-1">
-                  <path d="M17.523 15.3414C17.523 15.8617 17.1006 16.284 16.5804 16.284C16.0601 16.284 15.6377 15.8617 15.6377 15.3414C15.6377 14.8212 16.0601 14.3988 16.5804 14.3988C17.1006 14.3988 17.523 14.8212 17.523 15.3414ZM8.36185 15.3414C8.36185 15.8617 7.93952 16.284 7.41926 16.284C6.899 16.284 6.47667 15.8617 6.47667 15.3414C6.47667 14.8212 6.899 14.3988 7.41926 14.3988C7.93952 14.3988 8.36185 14.8212 8.36185 15.3414ZM17.6599 10.457L19.5222 7.23126C19.6548 7.0016 19.5762 6.7077 19.3465 6.57508C19.1168 6.44246 18.8229 6.52112 18.6903 6.75078L16.7961 10.0319C15.3477 9.3731 13.7317 9.00624 12 9.00624C10.2683 9.00624 8.65227 9.3731 7.20387 10.0319L5.30968 6.75078C5.17706 6.52112 4.88316 6.44246 4.6535 6.57508C4.42384 6.7077 4.34518 7.0016 4.4778 7.23126L6.34013 10.457C2.96918 12.3039 0.702759 15.7061 0.505737 19.6974H23.4943C23.2972 15.7061 21.0308 12.3039 17.6599 10.457Z" />
-                </svg>
+          {/* Left: Large APK download card details */}
+          <div className="flex-1 space-y-6 max-w-xl text-left">
+            <div className="space-y-4">
+              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/25 text-[10px] font-black text-emerald-400 uppercase tracking-widest animate-pulse">
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
                 RECOMMENDED INSTALL
               </span>
-              <h2 className="text-2xl md:text-3xl font-black text-white leading-tight">
+              
+              <h2 className="text-3xl md:text-4.5xl font-black text-white leading-tight tracking-tight flex items-center gap-2">
                 🎮 Play More Games
               </h2>
-              <p className="text-xs text-gray-400 leading-relaxed">
+              
+              <p className="text-xs md:text-sm text-gray-400 leading-relaxed font-medium">
                 Download the latest Android App and enjoy premium casino games, faster performance, new game modes, and regular updates.
               </p>
             </div>
 
-            {/* Features list */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-left">
+            {/* Features list checkmark grid */}
+            <div className="grid grid-cols-2 gap-x-6 gap-y-3 pt-1">
               {[
-                'Latest App Release',
-                '14+ Premium Games',
-                'Faster Performance',
-                'Daily Rewards',
-                'VIP Features',
-                'Secure Download'
+                { label: 'Latest App Release' },
+                { label: 'Daily Rewards' },
+                { label: '14+ Premium Games' },
+                { label: 'VIP Features' },
+                { label: 'Faster Performance' },
+                { label: 'Secure Download' }
               ].map((feature, idx) => (
-                <div key={idx} className="flex items-center gap-1.5 text-[11px] md:text-xs font-bold text-gray-300">
-                  <span className="text-emerald-500 font-extrabold">✓</span>
-                  <span>{feature}</span>
+                <div key={idx} className="flex items-center gap-2 text-[11px] md:text-xs font-bold text-gray-300">
+                  <span className="text-emerald-500 font-black text-sm">✓</span>
+                  <span>{feature.label}</span>
                 </div>
               ))}
             </div>
 
             {/* CTA Button */}
-            <div className="inline-flex items-center justify-center gap-2 px-5 py-2.5 bg-cyber-gradient text-white font-black text-xs md:text-sm rounded-xl shadow-lg shadow-neon-cyan/20 transition-all uppercase tracking-wider w-full sm:w-auto">
-              <Download size={14} />
-              <span>Download Latest APK</span>
+            <div className="pt-2">
+              <a 
+                href="https://www.mediafire.com/file/0y9mj92k1cuy18t/app-release.apk/file"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center gap-2.5 px-8 py-3.5 bg-gradient-to-r from-neon-purple to-neon-cyan hover:opacity-95 text-white font-black text-xs md:text-sm rounded-xl shadow-lg shadow-neon-cyan/20 hover:shadow-neon-cyan-glow transition-all duration-300 uppercase tracking-wider w-full sm:w-auto"
+              >
+                <Download size={16} />
+                <span>Download Latest APK</span>
+              </a>
             </div>
-          </a>
 
-          {/* Right: Banner graphics mockup */}
-          <div className="relative w-48 h-48 md:w-56 md:h-56 z-10 flex items-center justify-center">
-            <div className="absolute inset-0 rounded-full bg-cyber-gradient blur-2xl opacity-20 animate-spin-slow" />
-            <div className="h-40 w-40 rounded-3xl bg-dark-900 border border-dark-750 flex flex-col items-center justify-center p-4 shadow-2xl relative rotate-6 hover:rotate-0 transition-transform">
-              <div className="text-[10px] text-gray-550 font-bold mb-1">PROVABLY</div>
-              <div className="text-2xl font-black text-neon-cyan text-glow-cyan mb-2">FAIR</div>
-              <ShieldCheck size={48} className="text-neon-cyan animate-pulse" />
-              <div className="text-[8px] text-gray-450 mt-2 text-center">Verified RNG Audits</div>
+            {/* Footer version specifications */}
+            <div className="flex flex-wrap items-center gap-x-4 gap-y-1.5 text-[9.5px] font-bold text-gray-550 uppercase tracking-widest border-t border-dark-800/80 pt-4">
+              <span>Version: v1.0.0</span>
+              <span className="text-gray-700">•</span>
+              <span>Size: 47.46MB</span>
+              <span className="text-gray-700">•</span>
+              <span>Android 7.0+</span>
             </div>
           </div>
 
+          {/* Right: Phone mockup + Android mascot logo */}
+          <div className="relative flex items-center justify-center min-w-[340px] md:min-w-[420px] h-[365px] md:h-[400px]">
+            
+            {/* 3D-styled CSS mobile phone container */}
+            <div className="w-[185px] md:w-[210px] h-[330px] md:h-[380px] bg-dark-950 border-[5px] border-dark-800 rounded-[32px] shadow-2xl relative overflow-hidden flex flex-col justify-between p-2.5 z-10 hover:border-dark-750 transition-colors">
+              
+              {/* Speaker Notch */}
+              <div className="absolute top-1.5 left-1/2 -translate-x-1/2 w-14 h-3.5 bg-dark-800 rounded-full z-20 flex items-center justify-center">
+                <div className="w-6 h-[1px] bg-dark-900 rounded-full" />
+              </div>
+
+              {/* Mock App Screen Content */}
+              <div className="flex-1 flex flex-col justify-between pt-3">
+                {/* Header */}
+                <div className="flex justify-between items-center border-b border-dark-900 pb-1">
+                  <span className="text-[7.5px] font-black text-white tracking-tighter">AGX</span>
+                  <span className="text-[5.5px] text-gray-550 font-bold uppercase tracking-widest">by SpaceH</span>
+                </div>
+
+                {/* Balance Widget */}
+                <div className="bg-dark-900/90 border border-dark-800 rounded-lg p-1.5 mt-1.5 space-y-0.5 text-left">
+                  <span className="text-[5px] text-gray-550 font-black uppercase tracking-wider block">Total Balance</span>
+                  <div className="flex justify-between items-center gap-1">
+                    <span className="text-[9px] font-black text-white font-mono">₹18,750.50</span>
+                    <button className="px-1 py-0.5 bg-emerald-500/10 border border-emerald-500/20 text-[5px] font-black text-emerald-450 rounded uppercase tracking-wider">
+                      + Add Cash
+                    </button>
+                  </div>
+                </div>
+
+                {/* Top Games Section */}
+                <div className="mt-1.5 flex-1 flex flex-col justify-start">
+                  <span className="text-[6.5px] text-gray-500 font-black uppercase tracking-widest block text-left mb-1">Top Games</span>
+                  <div className="grid grid-cols-3 gap-1">
+                    {[
+                      { name: 'Aviator', color: 'bg-red-500/10 border-red-500/20 text-red-400', icon: Flame },
+                      { name: 'Mines', color: 'bg-orange-500/10 border-orange-500/20 text-orange-400', icon: Bomb },
+                      { name: 'Roulette', color: 'bg-purple-500/10 border-purple-500/20 text-purple-400', icon: CircleDot },
+                      { name: 'Plinko', color: 'bg-neon-pink/10 border-neon-pink/20 text-neon-pink', icon: Gamepad2 },
+                      { name: 'Dragon Tiger', color: 'bg-red-500/10 border-red-500/20 text-red-400', icon: Swords },
+                      { name: 'Blackjack', color: 'bg-blue-500/10 border-blue-500/20 text-blue-400', icon: Dices },
+                      { name: 'Teen Patti', color: 'bg-neon-gold/10 border-neon-gold/20 text-neon-gold', icon: Spade },
+                      { name: 'Ludo', color: 'bg-emerald-500/10 border-emerald-500/20 text-emerald-450', icon: Gamepad2 },
+                      { name: 'Andar Bahar', color: 'bg-neon-pink/10 border-neon-pink/20 text-neon-pink', icon: Dices }
+                    ].map((game, gIdx) => (
+                      <div key={gIdx} className="bg-dark-900 border border-dark-850 rounded p-1 flex flex-col items-center justify-center space-y-0.5">
+                        <div className={`p-0.5 rounded border ${game.color}`}>
+                          <game.icon size={8} />
+                        </div>
+                        <span className="text-[5.5px] font-black text-gray-300 truncate w-full text-center tracking-tight leading-none uppercase">{game.name}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Bottom navigation */}
+                <div className="flex justify-between items-center border-t border-dark-900 pt-1 mt-2.5">
+                  {[
+                    { label: 'Home', active: true },
+                    { label: 'Games', active: false },
+                    { label: 'Wallet', active: false },
+                    { label: 'Rewards', active: false },
+                    { label: 'Profile', active: false }
+                  ].map((nav, nIdx) => (
+                    <span key={nIdx} className={`text-[5px] font-black uppercase tracking-wider ${nav.active ? 'text-neon-cyan' : 'text-gray-550'}`}>
+                      {nav.label}
+                    </span>
+                  ))}
+                </div>
+              </div>
+
+            </div>
+
+            {/* Glowing Mascot Container */}
+            <div className="absolute right-2 md:right-4 flex flex-col items-center space-y-2 z-0">
+              
+              {/* Mascot badge panel */}
+              <div className="relative w-18 h-18 md:w-22 md:h-22 rounded-2xl bg-dark-900 border border-neon-gold/15 flex flex-col items-center justify-center shadow-lg shadow-neon-purple/10 hover:border-neon-gold/40 transition-colors">
+                <svg viewBox="0 0 24 24" fill="none" className="w-10 h-10 md:w-12 md:h-12 text-emerald-450 drop-shadow-[0_0_4px_rgba(16,185,129,0.45)]">
+                  <path d="M17.523 15.3414C17.523 15.8617 17.1006 16.284 16.5804 16.284C16.0601 16.284 15.6377 15.8617 15.6377 15.3414C15.6377 14.8212 16.0601 14.3988 16.5804 14.3988C17.1006 14.3988 17.523 14.8212 17.523 15.3414ZM8.36185 15.3414C8.36185 15.8617 7.93952 16.284 7.41926 16.284C6.899 16.284 6.47667 15.8617 6.47667 15.3414C6.47667 14.8212 6.899 14.3988 7.41926 14.3988C7.93952 14.3988 8.36185 14.8212 8.36185 15.3414ZM17.6599 10.457L19.5222 7.23126C19.6548 7.0016 19.5762 6.7077 19.3465 6.57508C19.1168 6.44246 18.8229 6.52112 18.6903 6.75078L16.7961 10.0319C15.3477 9.3731 13.7317 9.00624 12 9.00624C10.2683 9.00624 8.65227 9.3731 7.20387 10.0319L5.30968 6.75078C5.17706 6.52112 4.88316 6.44246 4.6535 6.57508C4.42384 6.7077 4.34518 7.0016 4.4778 7.23126L6.34013 10.457C2.96918 12.3039 0.702759 15.7061 0.505737 19.6974H23.4943C23.2972 15.7061 21.0308 12.3039 17.6599 10.457Z" fill="currentColor" />
+                </svg>
+                {/* Arrow pointing down */}
+                <div className="absolute -bottom-1.5 left-1/2 -translate-x-1/2 bg-emerald-500 text-white rounded-full p-0.5 shadow">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="4" className="w-2.5 h-2.5">
+                    <path d="M12 5v14M19 12l-7 7-7-7" />
+                  </svg>
+                </div>
+              </div>
+
+              {/* Glowing rings */}
+              <div className="relative w-24 h-7 mt-2 flex items-center justify-center">
+                <div className="absolute w-20 h-5 border-2 border-neon-purple rounded-full opacity-40 blur-xs scale-y-[0.35] animate-pulse" />
+                <div className="absolute w-16 h-3 border border-neon-cyan rounded-full opacity-60 blur-xs scale-y-[0.3] animate-pulse-slow" />
+                <span className="text-[9px] font-black text-neon-cyan text-glow-cyan uppercase tracking-widest z-10 pt-0.5">AGX APP</span>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+      {/* 2. Glass Trust Banner */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 w-full z-10">
+        
+        {/* Card 1: Bank-Level Security */}
+        <div className="glass-panel rounded-2xl border border-dark-700/60 p-4 flex items-center gap-3.5 hover:border-neon-cyan/35 hover:shadow-neon-cyan-glow transition-all duration-300">
+          <div className="p-3 bg-neon-cyan/10 border border-neon-cyan/20 text-neon-cyan rounded-xl">
+            <Lock size={18} />
+          </div>
+          <div className="text-left space-y-0.5">
+            <h4 className="text-xs font-black text-white">Bank-Level Security</h4>
+            <p className="text-[9.5px] text-gray-400 font-bold">100% Secure & encrypted</p>
+          </div>
+        </div>
+
+        {/* Card 2: Provably Fair Games */}
+        <div className="glass-panel rounded-2xl border border-dark-700/60 p-4 flex items-center gap-3.5 hover:border-neon-purple/35 hover:shadow-neon-purple-glow transition-all duration-300">
+          <div className="p-3 bg-neon-purple/10 border border-neon-purple/20 text-neon-purple rounded-xl">
+            <ShieldCheck size={18} />
+          </div>
+          <div className="text-left space-y-0.5">
+            <h4 className="text-xs font-black text-white">Provably Fair Games</h4>
+            <p className="text-[9.5px] text-gray-400 font-bold">Verified fair play outcomes</p>
+          </div>
+        </div>
+
+        {/* Card 3: 24/7 Live Support */}
+        <div className="glass-panel rounded-2xl border border-dark-700/60 p-4 flex items-center gap-3.5 hover:border-neon-pink/35 hover:shadow-neon-pink-glow transition-all duration-300">
+          <div className="p-3 bg-neon-pink/10 border border-neon-pink/20 text-neon-pink rounded-xl">
+            <MessageSquare size={18} />
+          </div>
+          <div className="text-left space-y-0.5">
+            <h4 className="text-xs font-black text-white">24/7 Live Support</h4>
+            <p className="text-[9.5px] text-gray-400 font-bold">Dedicated player assistance</p>
+          </div>
+        </div>
+
+        {/* Card 4: 1M+ Players */}
+        <div className="glass-panel rounded-2xl border border-dark-700/60 p-4 flex items-center gap-3.5 hover:border-neon-gold/35 hover:shadow-neon-gold-glow transition-all duration-300">
+          <div className="p-3 bg-neon-gold/10 border border-neon-gold/20 text-neon-gold rounded-xl">
+            <Users size={18} />
+          </div>
+          <div className="text-left space-y-0.5">
+            <h4 className="text-xs font-black text-white">1M+ Players</h4>
+            <p className="text-[9.5px] text-gray-400 font-bold">Trusted global community</p>
+          </div>
         </div>
 
       </div>
