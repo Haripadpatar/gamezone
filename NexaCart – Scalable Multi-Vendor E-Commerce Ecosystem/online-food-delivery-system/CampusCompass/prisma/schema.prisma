@@ -1,0 +1,103 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model User {
+  id                String              @id @default(uuid())
+  name              String
+  email             String              @unique
+  password          String              // Required field
+  maxFee            Float?              @default(1200000)
+  locationPref      String?             @default("All")
+  coursePref        String?             @default("All")
+  impFees           Int?                @default(3)
+  impPlacement      Int?                @default(4)
+  impRating         Int?                @default(4)
+  savedColleges     SavedCollege[]
+  savedComparisons  ComparisonHistory[]
+  predictorQueries  PredictorHistory[]
+  createdAt         DateTime            @default(now())
+  updatedAt         DateTime            @updatedAt
+}
+
+model PredictorHistory {
+  id        String   @id @default(uuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  examType  String
+  score     Float
+  createdAt DateTime @default(now())
+
+  @@index([userId])
+}
+
+model ComparisonHistory {
+  id         String   @id @default(uuid())
+  userId     String
+  user       User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  name       String
+  collegeIds String[]
+  createdAt  DateTime @default(now())
+
+  @@index([userId])
+}
+
+model College {
+  id                  String         @id @default(uuid())
+  name                String
+  location            String
+  description         String
+  fees                Float
+  rating              Float          @default(0.0)
+  placementPercentage Float
+  imageUrl            String
+  courses             Course[]       // Relation to Course model
+  reviews             Review[]
+  savedBy             SavedCollege[]
+  createdAt           DateTime       @default(now())
+  updatedAt           DateTime       @updatedAt
+
+  @@index([location])
+  @@index([fees])
+  @@index([rating])
+  @@index([placementPercentage])
+}
+
+model Course {
+  id        String   @id @default(uuid())
+  name      String
+  collegeId String
+  college   College  @relation(fields: [collegeId], references: [id], onDelete: Cascade)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([collegeId])
+}
+
+model Review {
+  id        String   @id @default(uuid())
+  collegeId String
+  college   College  @relation(fields: [collegeId], references: [id], onDelete: Cascade)
+  rating    Float
+  comment   String
+  userName  String   // Store the reviewer's name directly for convenience
+  createdAt DateTime @default(now())
+}
+
+model SavedCollege {
+  id        String   @id @default(uuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  collegeId String
+  college   College  @relation(fields: [collegeId], references: [id], onDelete: Cascade)
+  createdAt DateTime @default(now())
+
+  @@unique([userId, collegeId])
+}
